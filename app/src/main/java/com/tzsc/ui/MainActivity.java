@@ -1,22 +1,37 @@
-package com.tzsc;
+package com.tzsc.ui;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.view.View;
 
 import com.hdl.elog.ELog;
 import com.httplib.http.HttpSend;
 import com.httplib.model.HttpResult;
+import com.httplib.utils.HttpSpUtils;
+import com.tzsc.R;
+import com.tzsc.base.BaseActivity;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    @Override
+    public int getLayoutResId() {
+        //判断是否登录
+        if (!HttpSpUtils.getInstance().isLogin()) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
+        return R.layout.activity_main;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void initView() {
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     public void onLogin(View view) {
@@ -89,5 +104,10 @@ public class MainActivity extends AppCompatActivity {
                 ELog.e("onComplete");
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

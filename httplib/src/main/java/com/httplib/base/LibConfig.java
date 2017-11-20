@@ -11,14 +11,10 @@ public class LibConfig {
     /**
      * 域名
      */
-    public static final String BASE_URL = "http://192.168.1.23:8080/tzsc/";
+    public static final String BASE_URL = "http://192.168.1.5:8080/tzsc/";
     /**
      * appid
      */
     public static final String APP_ID = "12345649794";
-    /**
-     * appkey
-     */
-    public static final String APP_KEY = "3os66iud8go5a2u4sd3ofa3s456d";
 
 }

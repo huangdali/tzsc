@@ -11,7 +11,7 @@ import com.httplib.http.HttpSend;
  */
 
 public class MyApp extends Application {
-    private static MyApp app;
+    public static MyApp app;
 
     @Override
     public void onCreate() {

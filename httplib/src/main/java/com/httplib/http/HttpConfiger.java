@@ -163,8 +163,7 @@ public class HttpConfiger {
         HttpUrl.Builder builder = request
                 .url()
                 .newBuilder()
-                .addQueryParameter("appId", LibConfig.APP_ID)
-                .addQueryParameter("appkey", LibConfig.APP_KEY);
+                .addQueryParameter("appId", LibConfig.APP_ID);
         if (HttpSpUtils.getInstance().isLogin()) {//没有登录的就不要携带公共参数了
             builder.addQueryParameter("token", HttpSpUtils.getInstance().getToken());
             builder.addQueryParameter("uId", HttpSpUtils.getInstance().getUId());
