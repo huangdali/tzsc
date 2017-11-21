@@ -14,6 +14,16 @@ import io.reactivex.disposables.Disposable;
 public class LoginActivity extends BaseActivity {
 
 
+    /**
+     * 设置标题
+     *
+     * @return
+     */
+    @Override
+    public CharSequence setTitleText() {
+        return "登录";
+    }
+
     @Override
     public int getLayoutResId() {
         return R.layout.activity_login;

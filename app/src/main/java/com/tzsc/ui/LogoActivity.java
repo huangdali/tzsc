@@ -17,6 +17,22 @@ import java.util.TimerTask;
 public class LogoActivity extends BaseActivity {
     private static final int WHAT_DURATION = 2000;
 
+
+    @Override
+    public boolean isShowTitleBar() {
+        return false;
+    }
+
+    /**
+     * 设置标题
+     *
+     * @return
+     */
+    @Override
+    public CharSequence setTitleText() {
+        return null;
+    }
+
     @Override
     public int getLayoutResId() {
         return R.layout.activity_logo;
