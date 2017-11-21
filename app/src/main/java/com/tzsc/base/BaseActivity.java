@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.maning.mndialoglibrary.MProgressDialog;
 import com.tzsc.R;
 import com.tzsc.widget.TitleBarView;
 
@@ -18,13 +19,29 @@ import com.tzsc.widget.TitleBarView;
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     public Context mContext;
+    /**
+     * 标题
+     */
     private TitleBarView tbTitle;
+    /**
+     * 加载中
+     */
+    private MProgressDialog progressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
         mContext = this;
+        initBaseConfig();
+        initView();
+        initData();
+    }
+
+    /**
+     * 初始化基础配置
+     */
+    private void initBaseConfig() {
         if (isShowTitleBar()) {
             tbTitle = (TitleBarView) findViewById(R.id.tb_title);
             tbTitle.setTitle(setTitleText());
@@ -39,8 +56,30 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                 });
             }
         }
-        initView();
-        initData();
+        progressDialog = new MProgressDialog.Builder(this)
+                .isCanceledOnTouchOutside(true)
+                .setCornerRadius(20)
+                .setBackgroundWindowColor(Color.parseColor("#22000000"))
+                .setStrokeWidth(2)
+                .setProgressRimWidth(2)
+                .setTextColor(Color.WHITE)
+                .build();
+    }
+
+    /**
+     * 显示loading，默认加载中....
+     */
+    public void showLoading() {
+        progressDialog.show();
+    }
+
+    /**
+     * 显示loading，带消息
+     *
+     * @param msg
+     */
+    public void showLoading(CharSequence msg) {
+        progressDialog.show(msg.toString());
     }
 
     /**
