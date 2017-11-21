@@ -1,11 +1,13 @@
 package com.tzsc.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
 import com.hdl.elog.ELog;
 import com.httplib.http.HttpSend;
 import com.httplib.model.HttpResult;
+import com.httplib.utils.HttpSpUtils;
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
 
@@ -36,17 +38,17 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int getLayoutResId() {
-//        //判断是否登录
-//        if (!HttpSpUtils.getInstance().isLogin()) {
-//            startActivity(new Intent(this, LoginActivity.class));
-//            finish();
-//        }
+        //判断是否登录
+        if (!HttpSpUtils.getInstance().isLogin()) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
         return R.layout.activity_main;
     }
 
     @Override
     public void initView() {
-        showLoading();
+
     }
 
     @Override

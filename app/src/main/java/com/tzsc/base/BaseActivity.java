@@ -58,7 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
         progressDialog = new MProgressDialog.Builder(this)
                 .isCanceledOnTouchOutside(true)
-                .setCornerRadius(20)
+                .setCornerRadius(15)
                 .setBackgroundWindowColor(Color.parseColor("#22000000"))
                 .setStrokeWidth(2)
                 .setProgressRimWidth(2)
@@ -67,10 +67,23 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
+     * 页面不可见了就需要吧dialog关闭，否则会有内存泄露的风险。如果重写此方法，需要加上super.onPause();
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+    }
+
+    /**
      * 显示loading，默认加载中....
      */
     public void showLoading() {
-        progressDialog.show();
+        if (progressDialog != null) {
+            progressDialog.show();
+        }
     }
 
     /**
@@ -79,7 +92,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      * @param msg
      */
     public void showLoading(CharSequence msg) {
-        progressDialog.show(msg.toString());
+        if (progressDialog != null) {
+            progressDialog.show(msg.toString());
+        }
     }
 
     /**
