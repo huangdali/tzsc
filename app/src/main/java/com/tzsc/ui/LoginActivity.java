@@ -1,6 +1,7 @@
 package com.tzsc.ui;
 
-import android.view.View;
+import android.content.Intent;
+import android.graphics.Color;
 
 import com.dd.CircularProgressButton;
 import com.hdl.elog.ELog;
@@ -8,14 +9,16 @@ import com.httplib.http.HttpSend;
 import com.httplib.model.HttpResult;
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
+import com.tzsc.utils.SystemStatusManager;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class LoginActivity extends BaseActivity {
-
-
-    private CircularProgressButton cpbProgress;
+    @BindView(R.id.btnWithText)
+     CircularProgressButton cpbProgress;
 
     /**
      * 设置标题
@@ -32,16 +35,13 @@ public class LoginActivity extends BaseActivity {
         return R.layout.activity_login;
     }
 
-    @Override
-    public void initView() {
-        cpbProgress = (CircularProgressButton) findViewById(R.id.btnWithText);
-        cpbProgress.setOnClickListener(this);
-    }
 
     @Override
     public void initData() {
-
+        new SystemStatusManager(this).setTranslucentStatus(R.color.black);
+        tbTitle.setTitleColor(Color.GRAY);
     }
+
     public void onLogin() {
         HttpSend.getInstance().login("15519099928", "123456", new Observer<HttpResult>() {
             @Override
@@ -65,18 +65,21 @@ public class LoginActivity extends BaseActivity {
             }
         });
     }
-    int progress=0;
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnWithText:
-                cpbProgress.setIndeterminateProgressMode(true); // turn on indeterminate progress
-                cpbProgress.setProgress(50); // set progress > 0 & < 100 to display indeterminate progress
-                cpbProgress.setProgress(99); // set progress to 100 or -1 to indicate complete or error state
-                cpbProgress.setProgress(0); // set progress to 0 to switch back to normal state
-                cpbProgress.setProgress(50); // set progress > 0 & < 100 to display indeterminate progress
-                cpbProgress.setProgress(99); // set progress to 100 or -1 to indicate complete or error state
-                break;
-        }
+
+
+    @OnClick(R.id.btnWithText)
+    public void onLoginServer() {
+        cpbProgress.setIndeterminateProgressMode(true); // turn on indeterminate progress
+        cpbProgress.setProgress(50); // set progress > 0 & < 100 to display indeterminate progress
+        cpbProgress.setProgress(99); // set progress to 100 or -1 to indicate complete or error state
+        cpbProgress.setProgress(0); // set progress to 0 to switch back to normal state
+        cpbProgress.setProgress(50); // set progress > 0 & < 100 to display indeterminate progress
+        cpbProgress.setProgress(99); // set progress to 100 or -1 to indicate complete or error state
+    }
+
+
+    @OnClick(R.id.tv_login_register)
+    public void toRegister() {
+        startActivity(new Intent(mContext, RegisterActivity.class));
     }
 }

@@ -4,25 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.tzsc.ui.LoginActivity">
     <!--通用标题栏-->
     <com.tzsc.widget.TitleBarView
         android:id="@+id/tb_title"
-        style="@style/TitleBarView" />
+        style="@style/TitleBarView"
+        android:background="#f9f9f9" />
+
+    <View style="@style/line" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:src="@mipmap/ic_default_headurl" />
-    <!--<TextView-->
-    <!--android:id="@+id/tv_login"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:gravity="center"-->
-    <!--android:text="登录" />-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:src="@mipmap/ic_pwd" />
+            android:src="@mipmap/ic_register_pwd" />
 
         <EditText
             android:layout_width="match_parent"
@@ -85,22 +84,50 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:background="#1000" />
 
     <com.dd.CircularProgressButton
         android:id="@+id/btnWithText"
         android:layout_width="match_parent"
-        android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:cpb_textComplete="登录成功"
         app:cpb_cornerRadius="48dp"
+        app:cpb_selectorIdle="@color/appColor"
+        app:cpb_textComplete="登录成功"
         app:cpb_textError="用户名或密码错误"
         app:cpb_textIdle="登录" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_login_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="注册"
+            android:textColor="@color/appColor" />
+
+        <TextView
+            android:id="@+id/tv_login_findpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="忘记密码?"
+            android:textColor="@color/appColor" />
+    </LinearLayout>
+
+
 </LinearLayout>

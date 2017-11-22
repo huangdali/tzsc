@@ -1,7 +1,6 @@
 package com.tzsc.ui;
 
 import android.content.Intent;
-import android.view.View;
 
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
@@ -38,8 +37,9 @@ public class LogoActivity extends BaseActivity {
         return R.layout.activity_logo;
     }
 
+
     @Override
-    public void initView() {
+    public void initData() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -54,13 +54,4 @@ public class LogoActivity extends BaseActivity {
         }, WHAT_DURATION);
     }
 
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 }

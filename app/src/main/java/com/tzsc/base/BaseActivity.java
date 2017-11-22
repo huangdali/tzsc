@@ -11,18 +11,20 @@ import com.maning.mndialoglibrary.MProgressDialog;
 import com.tzsc.R;
 import com.tzsc.widget.TitleBarView;
 
+import butterknife.ButterKnife;
+
 /**
  * 公共基类
  * Created by HDL on 2017/11/20.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity {
 
     public Context mContext;
     /**
      * 标题
      */
-    private TitleBarView tbTitle;
+    public TitleBarView tbTitle;
     /**
      * 加载中
      */
@@ -32,9 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
+        ButterKnife.bind(this);
         mContext = this;
         initBaseConfig();
-        initView();
         initData();
     }
 
@@ -128,10 +130,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      */
     public abstract int getLayoutResId();
 
-    /**
-     * 组件初始化操作
-     */
-    public abstract void initView();
 
     /**
      * 页面初始化页面数据，在initView之后调用
