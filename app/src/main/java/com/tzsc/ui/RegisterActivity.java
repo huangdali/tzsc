@@ -2,10 +2,12 @@ package com.tzsc.ui;
 
 import android.widget.EditText;
 
+import com.dd.CircularProgressButton;
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 用户注册页面
@@ -36,6 +38,9 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.et_register_no)
     EditText etNo;
 
+    @BindView(R.id.cpb_register)
+    CircularProgressButton cpbProgress;
+
     /**
      * 需要返回按钮
      *
@@ -59,6 +64,16 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void initData() {
 
+    }
+
+    @OnClick(R.id.cpb_register)
+    public void onRegister() {
+        cpbProgress.setIndeterminateProgressMode(true); // turn on indeterminate progress
+        cpbProgress.setProgress(50); // set progress > 0 & < 100 to display indeterminate progress
+        cpbProgress.setProgress(99); // set progress to 100 or -1 to indicate complete or error state
+        cpbProgress.setProgress(0); // set progress to 0 to switch back to normal state
+        cpbProgress.setProgress(50); // set progress > 0 & < 100 to display indeterminate progress
+        cpbProgress.setProgress(99); // set progress to 100 or -1 to indicate complete or error state
     }
 
 }

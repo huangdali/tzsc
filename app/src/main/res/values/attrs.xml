@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--首页底部标签切换-->
+    <declare-styleable name="TabItemView">
+        <attr name="text" format="string|reference" />
+        <attr name="checked" format="boolean" />
+        <attr name="src" format="integer|reference" />
+        <attr name="src_press" format="integer|reference" />
+        <attr name="textColor" format="color" />
+        <attr name="textColor_press" format="color" />
+    </declare-styleable>
+</resources>
