@@ -70,6 +70,10 @@ public class TabItemView extends LinearLayout {
         }
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
     /**
      * 初始化属性
      *

@@ -1,10 +1,17 @@
 package com.tzsc.ui;
 
-import android.util.Log;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
+import com.tzsc.ui.classify.ClassifyFragment;
+import com.tzsc.ui.home.HomeFragment;
+import com.tzsc.ui.msg.MsgFragment;
+import com.tzsc.ui.my.MyFragment;
+import com.tzsc.ui.publish.PublishFragment;
 import com.tzsc.widget.CircleBgImageView;
 import com.tzsc.widget.TabItemView;
 
@@ -28,6 +35,13 @@ public class MainActivity extends BaseActivity {
     TabItemView tabMy;
 
     private TabItemView tabs[] = new TabItemView[4];
+    private HomeFragment homeFragment = new HomeFragment();
+    private ClassifyFragment classifyFragment = new ClassifyFragment();
+    private PublishFragment publishFragment = new PublishFragment();
+    private MsgFragment msgFragment = new MsgFragment();
+    private MyFragment myFragment = new MyFragment();
+    private Fragment[] fragments = {homeFragment, classifyFragment, publishFragment, msgFragment, myFragment};
+    private FragmentManager manager;
 
     /**
      * 设置标题
@@ -67,52 +81,102 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        tabs[0]=tabHome;
-        tabs[1]=tabClassify;
-        tabs[2]=tabMsg;
-        tabs[3]=tabMy;
-        ivPublish.setOnCheckedChangeListener(new CircleBgImageView.OnCheckedChangeListener() {
-            @Override
-            public void onChange(boolean isChecked) {
-                Toast.makeText(mContext, isChecked ? "点击发布" : "取消发布", Toast.LENGTH_SHORT).show();
-                updateCheck(4);
+        tabs[0] = tabHome;
+        tabs[1] = tabClassify;
+        tabs[2] = tabMsg;
+        tabs[3] = tabMy;
+        initFragment();
+        updateFrgm(0);
+    }
+
+    /**
+     * 初始化fragment
+     */
+    private void initFragment() {
+        manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        for (Fragment fragment : fragments) {
+            if (!fragment.isAdded()) {
+                transaction.add(R.id.fl_main_parent, fragment);
             }
-        });
+        }
+        transaction.commit();
     }
 
     @OnClick(R.id.tbv_home)
     public void toHome() {
         updateCheck(0);
+        updateFrgm(0);
     }
 
     @OnClick(R.id.tbv_classify)
     public void toClassify() {
         updateCheck(1);
+        updateFrgm(1);
     }
 
     @OnClick(R.id.tbv_msg)
     public void toMsg() {
         updateCheck(2);
+        updateFrgm(3);
+
     }
 
     @OnClick(R.id.tbv_my)
     public void toMy() {
         updateCheck(3);
+        updateFrgm(4);
     }
 
-    public void updateCheck(int index) {
+    @OnClick(R.id.iv_publish)
+    public void toPublish() {
+        if (!ivPublish.isChecked()) {
+            ivPublish.setChecked(true);
+            updateCheck(4);
+            updateFrgm(2);
+        }
+    }
+
+    /**
+     * 改变5个标签的状态
+     *
+     * @param index
+     */
+    private void updateCheck(int index) {
         /**
          * 自己被选中
          */
         if (index < tabs.length) {
-            Log.e("test", "updateCheck: 第几个设置为选中：" + index);
             tabs[index].setChecked(true);
+            //需要将发布复位
+            if (ivPublish.isChecked()) {
+                ivPublish.setChecked(false);
+            }
         }
+        /**
+         * 其他变为未选中
+         */
         for (int i = 0; i < tabs.length; i++) {
             if (i != index) {
-                Log.e("test", "updateCheck: 设置不选中：" + i);
                 tabs[i].setChecked(false);
             }
         }
+    }
+
+    /**
+     * 切换fragment
+     *
+     * @param currentTabIndex
+     */
+    private void updateFrgm(int currentTabIndex) {
+        FragmentTransaction transaction = manager.beginTransaction();
+        for (int i = 0; i < fragments.length; i++) {
+            if (i == currentTabIndex) {
+                transaction.show(fragments[currentTabIndex]);
+            } else {
+                transaction.hide(fragments[i]);
+            }
+        }
+        transaction.commit();
     }
 }

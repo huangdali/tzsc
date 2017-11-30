@@ -1,4 +1,4 @@
-package com.tzsc.ui;
+package com.tzsc.ui.login;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +9,7 @@ import com.httplib.http.HttpSend;
 import com.httplib.model.HttpResult;
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
+import com.tzsc.ui.register.RegisterActivity;
 import com.tzsc.utils.SystemStatusManager;
 
 import butterknife.BindView;

@@ -3,7 +3,6 @@ package com.tzsc.widget;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 
 import com.tzsc.R;
 
@@ -31,13 +30,13 @@ public class CircleBgImageView extends android.support.v7.widget.AppCompatImageV
         this.setBackgroundResource(R.drawable.shape_home_publish);
         objectAnimatorAdd.setDuration(300);
         objectAnimatorSub.setDuration(300);
-        setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isChecked = !isChecked;
-                updateState(isChecked);
-            }
-        });
+//        setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                isChecked = !isChecked;
+//                updateState(isChecked);
+//            }
+//        });
     }
 
     /**

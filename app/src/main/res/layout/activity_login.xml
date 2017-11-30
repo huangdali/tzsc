@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.tzsc.ui.LoginActivity">
+    tools:context="com.tzsc.ui.login.LoginActivity">
     <!--通用标题栏-->
     <com.tzsc.widget.TitleBarView
         android:id="@+id/tb_title"

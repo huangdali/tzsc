@@ -1,4 +1,4 @@
-package com.tzsc.ui;
+package com.tzsc.ui.register;
 
 import android.widget.EditText;
 
