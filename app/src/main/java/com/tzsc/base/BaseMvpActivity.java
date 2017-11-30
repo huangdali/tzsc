@@ -23,25 +23,6 @@ public abstract class BaseMvpActivity extends BaseActivity {
         presenter = bindPresenter();
         super.onCreate(savedInstanceState);
     }
-
-
-    /**
-     * 返回资源的布局
-     *
-     * @return
-     */
-    public abstract int getLayoutResId();
-
-    /**
-     * 组件初始化操作
-     */
-    public abstract void initView();
-
-    /**
-     * 页面初始化页面数据，在initView之后调用
-     */
-    public abstract void initData();
-
     /**
      * 绑定presenter，主要用于销毁工作
      *
