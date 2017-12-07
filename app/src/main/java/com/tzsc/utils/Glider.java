@@ -47,6 +47,21 @@ public class Glider {
     }
 
     /**
+     * 加载图片
+     *
+     * @param path
+     * @param target
+     */
+    public static void load(Object path, ImageView target) {
+        Glide.with(MyApp.app)
+                .load(path)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.mipmap.ic_default)
+                .error(R.mipmap.ic_default)
+                .into(target);
+    }
+
+    /**
      * 加载图片，资源文件
      *
      * @param resId  资源id
