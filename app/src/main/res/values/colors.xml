@@ -6,4 +6,6 @@
     <color name="appColor">#049bf9</color>
     <color name="black">#000</color>
     <color name="textColor">#515151</color>
+    <color name="red">@android:color/holo_red_light</color>
+    <color name="gray">#f2f0f0</color>
 </resources>

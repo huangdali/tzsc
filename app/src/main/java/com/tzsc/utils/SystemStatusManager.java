@@ -56,7 +56,7 @@ public class SystemStatusManager {
     }
 
     /**
-     * The default system bar tint color value.
+     * The goods_default system bar tint color value.
      */
     public static final int DEFAULT_TINT_COLOR = 0x99000000;
     private static String sNavBarOverride;
@@ -127,7 +127,7 @@ public class SystemStatusManager {
      * UI modes have not been enabled in either the theme or via window flags,
      * then this method does nothing.
      *
-     * @param enabled True to enable tinting, false to disable it (default).
+     * @param enabled True to enable tinting, false to disable it (goods_default).
      */
     public void setStatusBarTintEnabled(boolean enabled) {
         mStatusBarTintEnabled = enabled;
@@ -143,7 +143,7 @@ public class SystemStatusManager {
      * or earlier, or translucent system UI modes have not been enabled in either
      * the theme or via window flags, then this method does nothing.
      *
-     * @param enabled True to enable tinting, false to disable it (default).
+     * @param enabled True to enable tinting, false to disable it (goods_default).
      */
     public void setNavigationBarTintEnabled(boolean enabled) {
         mNavBarTintEnabled = enabled;

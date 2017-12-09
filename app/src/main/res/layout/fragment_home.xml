@@ -1,12 +1,219 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tzsc.ui.home.HomeFragment">
+    android:background="#1000">
 
-    <com.youth.banner.Banner
-        android:id="@+id/home_banner"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="com.tzsc.ui.home.HomeFragment">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--广告栏-->
+            <com.youth.banner.Banner
+                android:id="@+id/home_banner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_searchview"
+                android:drawableLeft="@mipmap/ic_search"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:hint="输入标题/商品名字"
+                android:paddingBottom="8dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <!--首页分类，第一行-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_all"
+                android:text="全部" />
+
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_new"
+                android:text="最新" />
+
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_hot"
+                android:text="热门" />
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_free"
+                android:text="免费" />
+
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_pai"
+                android:text="拍卖" />
+        </LinearLayout>
+        <!--首页分类，第二行-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp">
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_urgent"
+                android:text="急售" />
+
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_green"
+                android:text="绿植" />
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_bicycle"
+                android:text="单车" />
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_qiu"
+                android:text="求购" />
+
+
+            <TextView
+                style="@style/home_classify"
+                android:drawableTop="@mipmap/ic_goods_publish"
+                android:text="发布" />
+        </LinearLayout>
+
+        <!--快报-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginLeft="15dp"
+                android:src="@mipmap/ic_last_news" />
+
+            <ViewFlipper
+                android:id="@+id/vf_adv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:autoStart="true"
+                android:flipInterval="2000"
+                android:inAnimation="@anim/anim_viewfilper_in"
+                android:outAnimation="@anim/anim_viewfilper_out">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="多肉免费送了，先到先得" />
+            </ViewFlipper>
+        </LinearLayout>
+        <!--最新发布-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@mipmap/ic_vertical_line"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColor"
+                android:padding="5dp"
+                android:text="最新发布" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:textSize="@dimen/font_14"
+                android:drawableRight="@mipmap/ic_more"
+                android:text="更多" />
+        </LinearLayout>
+
+        <!--最新发布的商品-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_goods_list_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--最新发布-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@mipmap/ic_vertical_line"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColor"
+                android:padding="5dp"
+                android:text="拍卖中" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:textSize="@dimen/font_14"
+                android:drawableRight="@mipmap/ic_more"
+                android:text="更多" />
+        </LinearLayout>
+
+        <!--最新发布的商品-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_goods_list_pai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>
