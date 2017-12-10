@@ -37,7 +37,7 @@ public class Glider {
      * @param path
      * @param target
      */
-    public static void load(String path, ImageView target) {
+    public void load(String path, ImageView target) {
         Glide.with(MyApp.app)
                 .load(path)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -52,7 +52,7 @@ public class Glider {
      * @param path
      * @param target
      */
-    public static void load(Object path, ImageView target) {
+    public void load(Object path, ImageView target) {
         Glide.with(MyApp.app)
                 .load(path)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -67,7 +67,7 @@ public class Glider {
      * @param resId  资源id
      * @param target
      */
-    public static void load(int resId, ImageView target) {
+    public void load(int resId, ImageView target) {
         Glide.with(MyApp.app)
                 .load(resId)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -76,4 +76,18 @@ public class Glider {
                 .into(target);
     }
 
+    /**
+     * 加载头像
+     *
+     * @param url
+     */
+    public void loadHead(Object url, ImageView target) {
+        Glide.with(MyApp.app)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.mipmap.default_head)
+                .error(R.mipmap.default_head)
+                .transform(new GlideCircleTransform(MyApp.app))
+                .into(target);
+    }
 }

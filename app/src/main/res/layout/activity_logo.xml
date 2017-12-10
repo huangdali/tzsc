@@ -2,6 +2,6 @@
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/iv_logo"
     android:layout_width="match_parent"
-    android:background="@mipmap/ic_logo"
+    android:background="@mipmap/ic_index"
     android:scaleType="fitXY"
     android:layout_height="match_parent" />

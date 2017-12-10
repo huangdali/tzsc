@@ -5,11 +5,66 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.tzsc.ui.home.HomeFragment">
+    <!--通用标题栏-->
+    <com.tzsc.widget.TitleBarView
+        android:id="@+id/tb_title"
+        style="@style/TitleBarView" />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="发布页面" />
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_publish_bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_publish_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="right"
+            android:layout_marginRight="150dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_publish_goods"
+                android:gravity="center"
+                android:text="卖闲置" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_publish_qiu"
+                android:gravity="center"
+                android:text="发求购" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_publish_pai"
+                android:gravity="center"
+                android:text="发拍卖" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_publish_free"
+                android:gravity="center"
+                android:text="免费送" />
+        </LinearLayout>
+
+    </RelativeLayout>
 </LinearLayout>
+

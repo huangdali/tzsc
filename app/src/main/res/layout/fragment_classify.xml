@@ -2,13 +2,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#1000"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.tzsc.ui.home.HomeFragment">
+    <!--通用标题栏-->
+    <com.tzsc.widget.TitleBarView
+        android:id="@+id/tb_title"
+        style="@style/TitleBarView" />
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="分类页面" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--热门分类-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_vertical_line"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="猜你喜欢"
+                    android:textColor="@color/textColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/home_classify"
+                        android:drawableTop="@mipmap/ic_classify_bicycle"
+                        android:text="自行车" />
+
+                    <TextView
+                        style="@style/home_classify"
+                        android:drawableTop="@mipmap/ic_classify_autobicycle"
+                        android:text="电动车" />
+
+                    <TextView
+                        style="@style/home_classify"
+                        android:drawableTop="@mipmap/ic_classify_computer"
+                        android:text="电脑" />
+
+                    <TextView
+                        style="@style/home_classify"
+                        android:drawableTop="@mipmap/ic_classify_books"
+                        android:text="教材" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_vertical_line"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="所有分类"
+                    android:textColor="@color/textColor" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_classify_list"
+                    android:background="#1000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

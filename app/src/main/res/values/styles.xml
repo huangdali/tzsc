@@ -48,4 +48,18 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/textColor</item>
     </style>
+    <!--我的item-->
+    <style name="my_function">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:drawableRight">@mipmap/ic_right_gray</item>
+    </style>
 </resources>

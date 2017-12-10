@@ -1,18 +1,33 @@
 package com.tzsc.ui.msg;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.graphics.Color;
 
 import com.tzsc.R;
+import com.tzsc.base.BaseMvpFragment;
+import com.tzsc.base.BasePresenter;
+import com.tzsc.widget.TitleBarView;
 
-public class MsgFragment extends Fragment {
+import butterknife.BindView;
+
+public class MsgFragment extends BaseMvpFragment {
+    @BindView(R.id.tb_title)
+    TitleBarView tvTitle;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_msg, container, false);
+    public int getLayoutResId() {
+        return R.layout.fragment_msg;
+    }
+
+    @Override
+    public void initData() {
+        tvTitle.setTitle("消息");
+        tvTitle.setLeftVisible(false);
+        tvTitle.setTitleColor(Color.WHITE);
+    }
+
+    @Override
+    protected BasePresenter bindPresenter() {
+        return null;
     }
 
 }

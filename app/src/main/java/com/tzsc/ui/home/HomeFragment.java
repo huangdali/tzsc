@@ -55,7 +55,7 @@ public class HomeFragment extends BaseMvpFragment {
 
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
-                Glider.load(path, imageView);
+                Glider.getInstance().load(path, imageView);
             }
         });
         //设置图片集合

@@ -1,14 +1,100 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1000"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.tzsc.ui.home.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--通用标题栏-->
+    <com.tzsc.widget.TitleBarView
+        android:id="@+id/tb_title"
+        style="@style/TitleBarView" />
+    <!--头像，昵称-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我的页面" />
+        android:layout_height="150dp"
+        android:background="@color/appColor">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/default_head" />
+
+        <TextView
+            android:id="@+id/tv_nickName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_head"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="跳蚤哥"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@id/iv_head"
+            android:src="@mipmap/ic_right_white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <View style="@style/line" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/my_function"
+            android:drawableLeft="@mipmap/ic_goods_manger"
+            android:text="商品管理" />
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="43dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/my_function"
+            android:drawableLeft="@mipmap/ic_qiu_manager"
+            android:text="求购管理" />
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="43dp" />
+
+        <TextView
+            style="@style/my_function"
+            android:drawableLeft="@mipmap/ic_my_commentcenter"
+            android:text="评论中心" />
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="43dp" />
+
+        <TextView
+            style="@style/my_function"
+            android:drawableLeft="@mipmap/ic_my_settings"
+            android:text="设置" />
+
+        <View
+            style="@style/line"
+            android:layout_marginLeft="43dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/my_function"
+            android:drawableLeft="@mipmap/ic_app_about"
+            android:text="关于" />
+
+        <View style="@style/line" />
+    </LinearLayout>
+</LinearLayout>

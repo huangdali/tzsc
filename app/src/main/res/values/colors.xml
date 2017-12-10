@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#049bf9</color>
-    <color name="colorPrimaryDark">#049bf9</color>
-    <color name="colorAccent">#049bf9</color>
-    <color name="appColor">#049bf9</color>
+    <color name="colorPrimary">#3ca4e4</color>
+    <color name="colorPrimaryDark">#3ca4e4</color>
+    <color name="colorAccent">#3ca4e4</color>
+    <color name="appColor">#3ca4e4</color>
     <color name="black">#000</color>
     <color name="textColor">#515151</color>
     <color name="red">@android:color/holo_red_light</color>
