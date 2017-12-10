@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/iv_flea"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_publish_bg" />
@@ -24,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginRight="120dp"
             android:gravity="right"
-            android:layout_marginRight="150dp"
             android:orientation="vertical">
 
             <TextView
