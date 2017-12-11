@@ -5,7 +5,6 @@ import android.animation.PropertyValuesHolder;
 import android.graphics.Color;
 import android.widget.ImageView;
 
-import com.hdl.elog.ELog;
 import com.tzsc.R;
 import com.tzsc.base.BaseMvpFragment;
 import com.tzsc.base.BasePresenter;
@@ -54,7 +53,7 @@ public class PublishFragment extends BaseMvpFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ELog.e("可见了");
+//        ELog.e("可见了");
         if (animator != null) {
             animator.start();
         }

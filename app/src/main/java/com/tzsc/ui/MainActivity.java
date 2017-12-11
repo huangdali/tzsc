@@ -1,19 +1,32 @@
 package com.tzsc.ui;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
+import com.hdl.elog.ELog;
+import com.httplib.utils.HttpSpUtils;
+import com.hyphenate.EMConnectionListener;
+import com.hyphenate.EMError;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.ui.EaseConversationListFragment;
 import com.tzsc.R;
 import com.tzsc.base.BaseActivity;
 import com.tzsc.ui.classify.ClassifyFragment;
 import com.tzsc.ui.home.HomeFragment;
-import com.tzsc.ui.msg.MsgFragment;
+import com.tzsc.ui.login.LoginActivity;
+import com.tzsc.ui.msg.ChatActivity;
 import com.tzsc.ui.my.MyFragment;
 import com.tzsc.ui.publish.PublishFragment;
 import com.tzsc.widget.CircleBgImageView;
 import com.tzsc.widget.TabItemView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,9 +51,10 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment = new HomeFragment();
     private ClassifyFragment classifyFragment = new ClassifyFragment();
     private PublishFragment publishFragment = new PublishFragment();
-    private MsgFragment msgFragment = new MsgFragment();
+//    private MsgFragment msgFragment = new MsgFragment();
+    private EaseConversationListFragment msgListFragment = new EaseConversationListFragment();
     private MyFragment myFragment = new MyFragment();
-    private Fragment[] fragments = {homeFragment, classifyFragment, publishFragment, msgFragment, myFragment};
+    private Fragment[] fragments = {homeFragment, classifyFragment, publishFragment, msgListFragment, myFragment};
     private FragmentManager manager;
 
     /**
@@ -70,11 +84,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int getLayoutResId() {
-//        //判断是否登录
-//        if (!HttpSpUtils.getInstance().isLogin()) {
-//            startActivity(new Intent(this, LoginActivity.class));
-//            finish();
-//        }
+        //判断是否登录
+        if (!HttpSpUtils.getInstance().isLogin()) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
         return R.layout.activity_main;
     }
 
@@ -87,6 +101,7 @@ public class MainActivity extends BaseActivity {
         tabs[3] = tabMy;
         initFragment();
         updateFrgm(0);
+        initHXMessage();
     }
 
     /**
@@ -178,5 +193,95 @@ public class MainActivity extends BaseActivity {
             }
         }
         transaction.commit();
+    }
+    private void initHXMessage() {
+        EMMessageListener  msgListener = new EMMessageListener() {
+
+            @Override
+            public void onMessageReceived(final List<EMMessage> messages) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        msgListFragment.refresh();
+//                        if (currentTabIndex != 3) {
+//                            mUnReadMsg.setVisibility(View.VISIBLE);
+//                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCmdMessageReceived(List<EMMessage> messages) {
+                //收到透传消息
+            }
+
+            @Override
+            public void onMessageRead(List<EMMessage> messages) {
+                //收到已读回执
+            }
+
+            @Override
+            public void onMessageDelivered(List<EMMessage> message) {
+                //收到已送达回执
+            }
+
+            @Override
+            public void onMessageRecalled(List<EMMessage> messages) {
+                //消息被撤回
+            }
+
+            @Override
+            public void onMessageChanged(EMMessage message, Object change) {
+                //消息状态变动
+            }
+        };
+        EMClient.getInstance().chatManager().addMessageListener(msgListener);
+        msgListFragment.setConversationListItemClickListener(new EaseConversationListFragment.EaseConversationListItemClickListener() {
+
+            @Override
+            public void onListItemClicked(EMConversation conversation) {
+
+                ChatActivity.startActivity(mContext, conversation.conversationId(), null);
+            }
+
+            @Override
+            public void onListItemLongClicked(final EMConversation conversation) {
+//                //删除和某个user的整个的聊天记录（包括本地）
+//                ConfirmDialog.newInstance("1", "是否确定要删除当前对话？", new ConfirmOkCallBack() {
+//                    @Override
+//                    public void onOk() {
+//                        EMClient.getInstance().chatManager()
+//                                .deleteConversation(conversation.conversationId(), true);
+//                        msgFrag.refresh();
+//                    }
+//
+//                    @Override
+//                    public void onCancel() {
+//
+//                    }
+//                })
+//                        .setMargin(60)
+//                        .setOutCancel(false)
+//                        .show(getSupportFragmentManager());
+            }
+        });
+        EMClient.getInstance().addConnectionListener(new EMConnectionListener() {
+            @Override
+            public void onConnected() {
+
+
+            }
+
+            @Override
+            public void onDisconnected(int error) {
+                ELog.e("-------"+error);
+                if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
+                    showMsg("您的账号在别处登录了");
+                    ELog.e("您的账号在别处登录了");
+                    startActivity(new Intent(mContext,LoginActivity.class));
+                    finish();
+                }
+            }
+        });
     }
 }

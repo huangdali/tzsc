@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.maning.mndialoglibrary.MProgressDialog;
 import com.tzsc.R;
@@ -143,5 +144,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public boolean isShowTitleBar() {
         return true;
+    }
+
+    /**
+     * 显示消息
+     *
+     * @param msg
+     */
+    public void showMsg(CharSequence msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,5 +1,7 @@
 package com.httplib.model;
 
+import com.httplib.base.LibConfig;
+
 /**
  * 用户信息,登录成功之后服务器返回的
  * Created by HDL on 2017/11/20.
@@ -13,6 +15,17 @@ public class UserInfoVo {
     private boolean uSex;
     private String uPhone;
     private String token;
+    private String uPwd;
+
+    /**
+     * 获取头像url
+     *
+     * @return
+     */
+    public String getHeadurl() {
+        return LibConfig.BASE_URL + "headurl/" + uPhone + ".png";
+    }
+
     public int getuId() {
         return uId;
     }
@@ -51,6 +64,14 @@ public class UserInfoVo {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getuPwd() {
+        return uPwd;
+    }
+
+    public void setuPwd(String uPwd) {
+        this.uPwd = uPwd;
     }
 
     @Override
