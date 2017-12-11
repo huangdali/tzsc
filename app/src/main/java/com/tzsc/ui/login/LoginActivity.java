@@ -3,6 +3,7 @@ package com.tzsc.ui.login;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.widget.EditText;
 
 import com.dd.CircularProgressButton;
 import com.hdl.elog.ELog;
@@ -30,6 +31,8 @@ import io.reactivex.disposables.Disposable;
 public class LoginActivity extends BaseActivity {
     @BindView(R.id.btnWithText)
     CircularProgressButton cpbProgress;
+    @BindView(R.id.et_login_username)
+    EditText etUsername;
 
     /**
      * 设置标题
@@ -89,7 +92,7 @@ public class LoginActivity extends BaseActivity {
         UserInfoVo userInfoVo = new UserInfoVo();
         userInfoVo.setuId(19);
         userInfoVo.setToken("023759817239");
-        userInfoVo.setuPhone("15622827346");
+        userInfoVo.setuPhone(etUsername.getText().toString().trim());
         userInfoVo.setuNickName("大力哥");
         userInfoVo.setuPwd(GlobelContact.KEY_HX_USER_PWD);
         loginHX(userInfoVo);

@@ -240,7 +240,6 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onListItemClicked(EMConversation conversation) {
-
                 ChatActivity.startActivity(mContext, conversation.conversationId(), null);
             }
 

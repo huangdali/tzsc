@@ -38,6 +38,7 @@
             android:src="@mipmap/ic_my" />
 
         <EditText
+            android:id="@+id/et_login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
