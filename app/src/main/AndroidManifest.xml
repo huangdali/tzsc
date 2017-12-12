@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tzsc">
 
+    <uses-sdk tools:overrideLibrary="scut.carson_ho.searchview" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -23,7 +25,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <uses-sdk tools:overrideLibrary="scut.carson_ho.searchview" />
     <application
         android:name=".base.MyApp"
         android:allowBackup="true"
@@ -42,24 +43,26 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.login.LoginActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".ui.register.RegisterActivity"></activity>
-        <!--百度地图-->
+        <activity android:name=".ui.register.RegisterActivity" />
+        <!-- 百度地图 -->
         <activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity" />
-        <!--查看大图-->
+        <!-- 查看大图 -->
         <activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity" />
-        <activity android:name=".ui.msg.ChatActivity"/>
-        <!--环信配置开始-->
+        <activity android:name=".ui.msg.ChatActivity" />
+        <!-- 环信配置开始 -->
         <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="920724#tzsc" />
-        <!-- 声明SDK所需的service SDK核心功能-->
+        <!-- 声明SDK所需的service SDK核心功能 -->
         <service
             android:name="com.hyphenate.chat.EMChatService"
             android:exported="true" />
@@ -71,6 +74,7 @@
         <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
             <!-- 可选filter -->
@@ -79,7 +83,8 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-        <!--环信配置开始-->
+        <!-- 环信配置开始 -->
+        <activity android:name=".ui.goodsdetail.GoodsDetailActivity"></activity>
     </application>
 
 </manifest>

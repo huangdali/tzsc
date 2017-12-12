@@ -1,19 +1,23 @@
 package com.tzsc.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.tzsc.R;
 import com.tzsc.base.BaseMvpFragment;
 import com.tzsc.base.BasePresenter;
+import com.tzsc.ui.goodsdetail.GoodsDetailActivity;
 import com.tzsc.utils.Glider;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
@@ -37,6 +41,7 @@ public class HomeFragment extends BaseMvpFragment {
 
     @BindView(R.id.sv_home)
     ScrollView scrollView;
+    private CommonAdapter<String> goodsListNewAdapter;
 
     @Override
     public int getLayoutResId() {
@@ -83,12 +88,24 @@ public class HomeFragment extends BaseMvpFragment {
         for (int i = 0; i < 8; i++) {
             data.add("lsdjgla" + i);
         }
-        rvGoodsListNew.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_home_goods_new, data) {
+        goodsListNewAdapter = new CommonAdapter<String>(mContext, R.layout.item_home_goods_new, data) {
             @Override
             protected void convert(ViewHolder holder, String s, int position) {
 
             }
+        };
+        goodsListNewAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                startActivity(new Intent(mContext, GoodsDetailActivity.class));
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
         });
+        rvGoodsListNew.setAdapter(goodsListNewAdapter);
         rvGoodsListPai.setAdapter(new CommonAdapter<String>(mContext, R.layout.item_home_goods_pai, data) {
             @Override
             protected void convert(ViewHolder holder, String s, int position) {
