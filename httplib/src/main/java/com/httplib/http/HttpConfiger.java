@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *
  * @author HDL
  */
-public class HttpConfiger {
+public class  HttpConfiger {
     /**
      * 读取超时时间
      */

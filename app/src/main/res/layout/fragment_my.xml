@@ -74,7 +74,7 @@
         <TextView
             style="@style/my_function"
             android:drawableLeft="@mipmap/ic_my_commentcenter"
-            android:text="评论中心" />
+            android:text="留言中心" />
 
         <View
             style="@style/line"

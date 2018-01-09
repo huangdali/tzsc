@@ -147,9 +147,20 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(int code, String message) {
-                        ELog.e("main", "登录聊天服务器失败！code=" + code + ";msg=" + message);
-                        showMsg("登录失败了");
-                        HttpSpUtils.getInstance().saveIsLogin(false);
+                        if (code==200) {
+                            HttpSpUtils.getInstance().saveIsLogin(true);
+                            startActivity(new Intent(mContext, MainActivity.class));
+                            finish();
+                        }else {
+                            ELog.e("main", "登录聊天服务器失败！code=" + code + ";msg=" + message);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    showMsg("登录失败了");
+                                }
+                            });
+                            HttpSpUtils.getInstance().saveIsLogin(false);
+                        }
 //                        showToast("登录失败");
 //                        hideLoadding();
                     }

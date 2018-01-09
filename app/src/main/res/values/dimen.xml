@@ -2,6 +2,7 @@
 <resources>
     <dimen name="textSize">16sp</dimen>
     <dimen name="font_price">18sp</dimen>
+    <dimen name="font_price_big">20sp</dimen>
     <dimen name="font_small">10sp</dimen>
-    <dimen name="font_14">12sp</dimen>
+    <dimen name="font_12">12sp</dimen>
 </resources>

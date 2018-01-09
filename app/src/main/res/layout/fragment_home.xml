@@ -171,7 +171,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:drawablePadding="5dp"
-                android:textSize="@dimen/font_14"
+                android:textSize="@dimen/font_12"
                 android:drawableRight="@mipmap/ic_more"
                 android:text="更多" />
         </LinearLayout>
@@ -205,7 +205,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:drawablePadding="5dp"
-                android:textSize="@dimen/font_14"
+                android:textSize="@dimen/font_12"
                 android:drawableRight="@mipmap/ic_more"
                 android:text="更多" />
         </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.hdl.elog.ELog;
@@ -240,6 +241,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onListItemClicked(EMConversation conversation) {
+                Log.e("----test", "onListItemClicked: 点击了");
                 ChatActivity.startActivity(mContext, conversation.conversationId(), null);
             }
 
