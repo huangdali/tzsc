@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
+import com.hdl.elog.ELog;
+import com.httplib.model.GoodsVo;
 import com.tzsc.R;
 import com.tzsc.base.BaseMvpFragment;
 import com.tzsc.base.BasePresenter;
@@ -26,7 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeFragment extends BaseMvpFragment {
+public class HomeFragment extends BaseMvpFragment implements HomeContact.IHomeView {
     /**
      * 广告轮播
      */
@@ -42,6 +44,7 @@ public class HomeFragment extends BaseMvpFragment {
     @BindView(R.id.sv_home)
     ScrollView scrollView;
     private CommonAdapter<String> goodsListNewAdapter;
+    private HomeContact.IHomePresenter presenter = new HomePresenterImpl(this);
 
     @Override
     public int getLayoutResId() {
@@ -112,6 +115,7 @@ public class HomeFragment extends BaseMvpFragment {
 
             }
         });
+        presenter.loadNewsGoods(0, 0);
     }
 
     @Override
@@ -130,7 +134,11 @@ public class HomeFragment extends BaseMvpFragment {
 
     @Override
     protected BasePresenter bindPresenter() {
-        return null;
+        return presenter;
     }
 
+    @Override
+    public void showNewsGoods(List<GoodsVo> data) {
+        ELog.e(data);
+    }
 }

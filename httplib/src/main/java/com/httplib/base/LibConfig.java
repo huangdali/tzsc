@@ -11,7 +11,7 @@ public class LibConfig {
     /**
      * 域名
      */
-    public static final String BASE_URL = "http://192.168.1.5:8080/tzsc/";
+    public static final String BASE_URL = "http://192.168.1.3:8080/tzsc/";
     /**
      * appid
      */

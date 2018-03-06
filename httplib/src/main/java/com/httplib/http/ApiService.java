@@ -1,7 +1,10 @@
 package com.httplib.http;
 
+import com.httplib.model.GoodsVo;
 import com.httplib.model.HttpResult;
 import com.httplib.model.UserInfoVo;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.POST;
@@ -38,6 +41,6 @@ public interface ApiService {
      * @param pCount 每页有多少个
      * @return
      */
-    @POST("api/loadGoods.action")
-    Observable<HttpResult> loadGoods(@Query("pSize") int pSize, @Query("pCount") int pCount);
+    @POST("api/queryAll.action")
+    Observable<HttpResult<List<GoodsVo>>> loadGoods(@Query("pSize") int pSize, @Query("pCount") int pCount);
 }

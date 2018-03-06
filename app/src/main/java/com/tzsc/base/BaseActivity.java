@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.maning.mndialoglibrary.MProgressDialog;
 import com.tzsc.R;
 import com.tzsc.widget.TitleBarView;
 
@@ -26,10 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 标题
      */
     public TitleBarView tbTitle;
-    /**
-     * 加载中
-     */
-    private MProgressDialog progressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,14 +54,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 });
             }
         }
-        progressDialog = new MProgressDialog.Builder(this)
-                .isCanceledOnTouchOutside(true)
-                .setCornerRadius(15)
-                .setBackgroundWindowColor(Color.parseColor("#22000000"))
-                .setStrokeWidth(2)
-                .setProgressRimWidth(2)
-                .setTextColor(Color.WHITE)
-                .build();
     }
 
     /**
@@ -75,29 +62,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-        }
-    }
-
-    /**
-     * 显示loading，默认加载中....
-     */
-    public void showLoading() {
-        if (progressDialog != null) {
-            progressDialog.show();
-        }
-    }
-
-    /**
-     * 显示loading，带消息
-     *
-     * @param msg
-     */
-    public void showLoading(CharSequence msg) {
-        if (progressDialog != null) {
-            progressDialog.show(msg.toString());
-        }
     }
 
     /**

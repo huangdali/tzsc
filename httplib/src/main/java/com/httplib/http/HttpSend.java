@@ -2,12 +2,15 @@ package com.httplib.http;
 
 import android.content.Context;
 
+import com.httplib.base.ResultCallbackListener;
+import com.httplib.model.GoodsVo;
 import com.httplib.model.HttpResult;
 import com.httplib.utils.HttpInterceptor;
 import com.httplib.utils.HttpSpUtils;
 
+import java.util.List;
+
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 
 /**
  * 网络发送器
@@ -52,7 +55,7 @@ public class HttpSend {
      * @param pwd        密码
      * @param subscriber 请求进度回调
      */
-    public void login(String userName, String pwd, Observer<HttpResult> subscriber) {
+    public void login(String userName, String pwd, ResultCallbackListener<HttpResult> subscriber) {
         Observable<HttpResult> login = apiService.login(userName, pwd)
                 .map(new HttpInterceptor<>(HttpInterceptor.TYPE_LOGIN));//拦截网络请求
         HttpConfiger.getInstance().toSubscribe(login).subscribe(subscriber);
@@ -63,7 +66,7 @@ public class HttpSend {
      *
      * @param subscriber
      */
-    public void logout(Observer<HttpResult> subscriber) {
+    public void logout(ResultCallbackListener<HttpResult> subscriber) {
         Observable<HttpResult> login = apiService.logout()
                 .map(new HttpInterceptor<>(HttpInterceptor.TYPE_LOGOUT));//拦截网络请求
         HttpConfiger.getInstance().toSubscribe(login).subscribe(subscriber);
@@ -76,9 +79,9 @@ public class HttpSend {
      * @param pCount     每页有多少个
      * @param subscriber
      */
-    public void loadGoods(int pSize, int pCount, Observer<HttpResult> subscriber) {
-        Observable<HttpResult> login = apiService.loadGoods(pSize, pCount)
-                .map(new HttpInterceptor<>(HttpInterceptor.TYPE_NORMAL));//拦截网络请求
-        HttpConfiger.getInstance().toSubscribe(login).subscribe(subscriber);
+    public void loadGoods(int pSize, int pCount, ResultCallbackListener<HttpResult<List<GoodsVo>>> subscriber) {
+        Observable<HttpResult<List<GoodsVo>>> loadgoods = apiService.loadGoods(pSize, pCount);
+        loadgoods.map(new HttpInterceptor<>(HttpInterceptor.TYPE_NORMAL));//拦截网络请求
+        HttpConfiger.getInstance().toSubscribe(loadgoods).subscribe(subscriber);
     }
 }

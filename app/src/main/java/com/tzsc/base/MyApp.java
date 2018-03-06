@@ -9,6 +9,8 @@ import com.httplib.http.HttpSend;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseUI;
 import com.hyphenate.easeui.EasyUiApplication;
+import com.xiasuhuei321.loadingdialog.manager.StyleManager;
+import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
 
 import java.util.Iterator;
 import java.util.List;
@@ -57,7 +59,16 @@ public class MyApp extends Application {
         //EMClient.getInstance().setDebugMode(true);
         EasyUiApplication.setAppContext(this);
 
+       //初始化loadingdialog
+        StyleManager s = new StyleManager();
+        //在这里调用方法设置s的属性
+        //code here...
+        s.Anim(false).repeatTime(0).contentSize(-1).intercept(true);
+
+        LoadingDialog.initStyle(s);
+
     }
+
     private String getAppName(int pID) {
         String processName = null;
         ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);

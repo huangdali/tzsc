@@ -8,24 +8,22 @@
     <FrameLayout
         android:id="@+id/fl_main_parent"
         android:layout_width="match_parent"
-        android:layout_marginBottom="55dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_main_bar" />
 
 
     <RelativeLayout
+        android:id="@+id/rl_main_bar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/transparent">
-        <View
-            android:layout_above="@+id/ll_main_bar"
-            android:layout_width="match_parent"
-            android:background="@drawable/shape_line_gradient"
-            android:layout_height="1dp"/>
+        android:background="@android:color/holo_green_light"
+        android:clipChildren="false">
+
         <LinearLayout
             android:id="@+id/ll_main_bar"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:background="@color/gray"
             android:gravity="bottom"
@@ -76,13 +74,19 @@
                 app:text="我的" />
         </LinearLayout>
 
-        <com.tzsc.widget.CircleBgImageView
-            android:id="@+id/iv_publish"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_centerHorizontal="true"
-            android:padding="5dp"
-            android:src="@mipmap/ic_publish" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/shape_line_gradient" />
     </RelativeLayout>
 
+    <com.tzsc.widget.CircleBgImageView
+        android:id="@+id/iv_publish"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:src="@mipmap/ic_publish" />
 </RelativeLayout>

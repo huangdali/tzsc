@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -20,6 +22,7 @@ public abstract class BaseMvpFragment extends Fragment {
     private BasePresenter presenter = null;
     public Context mContext;
     private Unbinder unbinder;
+    private LoadingDialog loadingDialog;
 
     @Nullable
     @Override
@@ -30,7 +33,27 @@ public abstract class BaseMvpFragment extends Fragment {
         presenter = bindPresenter();
         initView(view);
         initData();
+        loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.setLoadingText("加载中...");//设置loading时显示的文字
         return view;
+    }
+
+    /**
+     * 显示loading
+     */
+    public void showLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.show();
+        }
+    }
+
+    /**
+     * 关闭loading
+     */
+    public void closeLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.close();
+        }
     }
 
     /**

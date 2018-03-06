@@ -7,6 +7,7 @@ import android.widget.EditText;
 
 import com.dd.CircularProgressButton;
 import com.hdl.elog.ELog;
+import com.httplib.base.ResultCallbackListener;
 import com.httplib.http.HttpSend;
 import com.httplib.model.HttpResult;
 import com.httplib.model.UserInfoVo;
@@ -25,7 +26,6 @@ import com.tzsc.utils.SystemStatusManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class LoginActivity extends BaseActivity {
@@ -57,7 +57,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void onLogin() {
-        HttpSend.getInstance().login("15519099928", "123456", new Observer<HttpResult>() {
+        HttpSend.getInstance().login("15519099928", "123456", new ResultCallbackListener<HttpResult>() {
             @Override
             public void onSubscribe(Disposable d) {
                 ELog.e(d);
@@ -147,11 +147,11 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(int code, String message) {
-                        if (code==200) {
+                        if (code == 200) {
                             HttpSpUtils.getInstance().saveIsLogin(true);
                             startActivity(new Intent(mContext, MainActivity.class));
                             finish();
-                        }else {
+                        } else {
                             ELog.e("main", "登录聊天服务器失败！code=" + code + ";msg=" + message);
                             runOnUiThread(new Runnable() {
                                 @Override

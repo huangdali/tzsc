@@ -28,8 +28,8 @@ public class CircleBgImageView extends android.support.v7.widget.AppCompatImageV
         super(context, attrs, defStyle);
         setPadding(10, 10, 10, 10);
         this.setBackgroundResource(R.drawable.shape_home_publish);
-        objectAnimatorAdd.setDuration(300);
-        objectAnimatorSub.setDuration(300);
+        objectAnimatorAdd.setDuration(100);
+        objectAnimatorSub.setDuration(100);
 //        setOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
